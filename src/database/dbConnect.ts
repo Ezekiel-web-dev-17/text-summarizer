@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { DB_URI } from "../config/local.config";
+import { DB_URI, NODE_ENV } from "../config/local.config";
 
 export const DBConnect = async () => {
   try {
@@ -8,6 +8,7 @@ export const DBConnect = async () => {
       process.exit(0);
     }
     await mongoose.connect(DB_URI);
+    console.log(`Server is running ${NODE_ENV}`);
     console.log("DATABASE connected Successfully. 🛜");
   } catch (error) {
     console.log("Error connecting to mongoDB.");
